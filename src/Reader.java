@@ -8,6 +8,7 @@ public class Reader extends JFrame{
 	JTextField t1, t2;
 	int i, k;
 	String a, b;
+	eHandler handler = new eHandler();
 	
 	public Reader(String s) {
 		super(s);
@@ -20,13 +21,41 @@ public class Reader extends JFrame{
 		l4 = new JLabel("");
 		t1 = new JTextField(10);
 		t2 = new JTextField(10);
-		add(t2);
-		add(l2);
-		add(t1);
 		add(l1);
-		add(l3);
-		add(l4);
+		add(t1);
+		add(l2);
+		add(t2);
 		add(b2);
 		add(b1);
+		add(l3);
+		add(l4);
+		b2.addActionListener(handler);
+		b1.addActionListener(handler);
+	}
+	
+	public class eHandler implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			try {
+				if(e.getSource()==b2) {
+					i = Integer.parseInt(t1.getText());
+					k = Integer.parseInt(t2.getText());
+					a = "Первое число = " + ++i;
+					b = "Второе число = " + ++k;
+					l3.setText(a);
+					l4.setText(b);
+				}
+				
+				if(e.getSource()==b1) {
+					t1.setText(null);
+					t2.setText(null);
+					l3.setText(null);
+					l4.setText(null);
+				}
+			}catch(NumberFormatException exc) {
+				JOptionPane.showMessageDialog(null, "Вводите только цифры");
+			}
+		}
+		
 	}
 }
