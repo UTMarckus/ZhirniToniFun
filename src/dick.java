@@ -4,10 +4,9 @@ class dick {
 		
 		Reader r = new Reader();
 		r.Scan();
-		//i = count(i);
-		//k = count(k);
-		System.out.println(count(r.i));
-		System.out.println(count(r.k));
+		r.i = count(r.i);
+		r.k = count(r.k);
+		r.Scan(r.i, r.k);
 
 	}
 	
